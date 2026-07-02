@@ -5,7 +5,7 @@ Step by step directions on how to set up a home lab running Active Directory wit
 # Step 2. Download Windows Server 2019 ISO and Windows 10 ISO
 [Click here](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2019) to download Windows Server 2019 ISO
 [Click here](https://www.microsoft.com/en-us/software-download/windows10) to download Windows 10 installation media. Ensure you select "Create installation media (USB flash drive, DVD, or ISO file) for another PC", then choose the "ISO file" option when prompted.
-# Step 3. Set up the first virtual machine (Windows Server 2019)
+# Step 3. Set up the Server virtual machine (Windows Server 2019)
 Open Oracle VirtualBox. Click New (CTRL + N). 
 Under VM name, call it "DC" for this exercise (domain controller). 
 Under "specify virtual hardware", allocate an appriopriate amount of memory and CPU based on how much you have (keep in mind we will be running two virtual machines at the same time). 
@@ -28,18 +28,28 @@ To enable the RAS/NAT, on the Server Manager Dashboard select Tools -> Routing a
 On the Server Manager Dashboard select add roles and features -> Next then select DHCP server -> Add Features -> Next and Install.
 Set up the scope by selecting tools from the Server Manager Dashboard -> DHCP -> Right click IPv4 -> New Scope -> Next -> Name the scope ("172.16.0.100-200" for clarity and this lab) -> Start IP Address 172.16.0.100, End IP Address 172.16.0.200, Subnet mask 255.255.255.0 -> Next (skip exclusions and delay) -> Next (skip lease duration) -> Add IP address 172.16.0.1 for Router (default gateway) -> Next and Finish.
 Right Click your DHCP server under DHCP, Authorize -> Right click IPv4 and click Refresh. 
-# Step 6. 
+# Step 6. Set up the Client virtual machine
+Open Oracle VirtualBox Manager -> New -> VM Name: CLIENT1
+Under "specify virtual hardware", allocate an appriopriate amount of memory and CPU based on how much you have (keep in mind we will be running two virtual machines at the same time). 
+To set up CLIENT1's network adapter, highlight CLIENT1 and select settings -> Network -> Adapter 1 select Internal Network.
+A pop up asking to select a virtual optical disk file or physical optical drive containing a disk to start should appear. Select the Windows 10 ISO file.
+Continue installing Windows 10 OS. Ensure you install Windows Pro, not Home.
+Join the domain "mydomain.com" by logging in on the login screen or Start Menu -> Systems -> Advanced System Settings -> Computer Name -> Change... -> Under the Member of... -> Enter domain name and credientials. Okay and Restart.
+Ensure you have internet access by opening CMD and using ipconfig or ping.
 
 # How to Create AD Organizational Units
-On the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
+Logon to the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
 Right Click your domain root and Select New -> Organizational Unit -> Name it _Branches (Tick Protect container from accidental deletion)
 Right Click _Branches -> Select New -> Organizational Unit -> Name it Toronto.
 Right Click Toronto -> Select New -> Organizational Unit -> Name it Users. Repeat to create Workstations. PIC 7
 
 # How to Create Domain User Accounts 
-On the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
+Logon to the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
 Navigate to your domain -> _Branches -> Toronto -> Users
 Right Click Users -> New -> User -> First name: Alice, Last name: Johnson, User logon name: ajohnson -> Enter a password for you to give to the new user. Ensure you tick "User must change password at next logon".
 
-#
+# How to Create Security Groups
+Logon to the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
+Right Click domain root -> New -> OU -> Name it _Groups.
+Right Click _Groups -> New -> Group -> Make three groups called Helpdesk, Accounting, and ITSupport.
 
