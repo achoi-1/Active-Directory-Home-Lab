@@ -25,4 +25,21 @@ Add a new forest -> Type mydomain.com then click Next -> Type a generic password
 Set up RAS/NAT (allows client on the private network to connect to the internet via the domain controller) by going to Server Manager Dashboard -> Add roles and features -> Ensure you select your server -> Next until you reach roles. Tick Remote Access -> Next until you can Tick DirectAccess and VPN (RAS) and Routing -> Next and Install PIC 5
 To enable the RAS/NAT, on the Server Manager Dashboard select Tools -> Routing and Remote Access -> Right click your server -> Configure and Enable Routing and Remote Access -> Next, then Select Network address translation (NAT) -> Under Use this puiblic interface to connect to the internet select Ethernet (the network adapter that has internet connection. If it is greyed out, exit out of the setup wizard and right click your server, then refresh) -> Next and Finish. PIC 6
 # Step 5. Set up DHCP server on the Domain Controller
-Serv
+On the Server Manager Dashboard select add roles and features -> Next then select DHCP server -> Add Features -> Next and Install.
+Set up the scope by selecting tools from the Server Manager Dashboard -> DHCP -> Right click IPv4 -> New Scope -> Next -> Name the scope ("172.16.0.100-200" for clarity and this lab) -> Start IP Address 172.16.0.100, End IP Address 172.16.0.200, Subnet mask 255.255.255.0 -> Next (skip exclusions and delay) -> Next (skip lease duration) -> Add IP address 172.16.0.1 for Router (default gateway) -> Next and Finish.
+Right Click your DHCP server under DHCP, Authorize -> Right click IPv4 and click Refresh. 
+# Step 6. 
+
+# How to Create AD Organizational Units
+On the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
+Right Click your domain root and Select New -> Organizational Unit -> Name it _Branches (Tick Protect container from accidental deletion)
+Right Click _Branches -> Select New -> Organizational Unit -> Name it Toronto.
+Right Click Toronto -> Select New -> Organizational Unit -> Name it Users. Repeat to create Workstations. PIC 7
+
+# How to Create Domain User Accounts 
+On the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers
+Navigate to your domain -> _Branches -> Toronto -> Users
+Right Click Users -> New -> User -> First name: Alice, Last name: Johnson, User logon name: ajohnson -> Enter a password for you to give to the new user. Ensure you tick "User must change password at next logon".
+
+#
+
