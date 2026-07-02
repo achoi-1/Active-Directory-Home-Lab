@@ -1,5 +1,5 @@
 # Active-Directory-Home-Lab
-Step by step directions on how to set up a home lab running Active Directory with test users to mimic an office environment. No prior VMware or Active Directory experience required.
+Step by step directions on how to set up a home lab running Active Directory with test users to mimic an office environment. No prior VMware or Active Directory experience required. Credits to [Josh Madakor](https://www.youtube.com/@JoshMadakor)
 # Step 1. Set up and install your VMware (Oracle VirtualBox)
 [Click here](https://www.virtualbox.org/) to visit the Oracle VirtualBox official website to begin downloading. Run the executable and follow the installation instructions.
 # Step 2. Download Windows Server 2019 ISO and Windows 10 ISO
