@@ -89,9 +89,9 @@ I will guide you step by step through setting up a home lab running Active Direc
 
 * Open Internet Explorer and click [here](https://github.com/joshmadakor1/AD_PS/archive/master.zip) to download the PowerShell Script (Credits to [Josh Madakor](https://www.youtube.com/@JoshMadakor)).  
 * Extract file to desktop -> Start menu -> Windows PowerShell -> Windows PowerShell ISE -> On PowerShell ISE click File -> Open -> Locate the recently downloaded and extract folder -> Open 1_CREATE_USERS.ps1  
-* In the blue section of PowerShell ISE, type the following (only run this command safely in a VM setting)
+* In the blue section of PowerShell ISE, type the following (only run this command safely in a VM setting):
 > Set-ExecutionPolicy Unrestricted  
--> Yes to all -> Run Script (F5, run it once).  
+* -> Yes to all -> Run Script (F5, run it once).  
 ### Active Directory: How to
 #### How to Create AD Organizational Units
 * Logon to the domain controller, Start Menu -> Windows Administrative Tools -> Active Directory Users and Computers.  
