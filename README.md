@@ -2,8 +2,8 @@
 
 ## Information Technology Projects 💻: 
 * Install and Configure Active Directory within Oracle VirtualBox VMs
-  * Oracle VirtualBox: Diagram, Installation, and Setup
-    * Setting up Server VM
+  * [Oracle VirtualBox: Diagram, Installation, and Setup](#oracle-virtualbox-diagram-installation-and-setup)
+    * [Setting up Server VM](#step-3-set-up-the-server-virtual-machine-windows-server-2019)
     * Create a Domain (Active Directory Domain Services)
     * Setting up DHCP server on the Domain Controller
     * Setting up Client VM
